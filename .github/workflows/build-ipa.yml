@@ -50,14 +50,8 @@ jobs:
       # ──────────────────────────────────────────────────────────────────────────
       # 4. ccache
       # ──────────────────────────────────────────────────────────────────────────
-      - name: Setup ccache
-        uses: hendrikmuhs/ccache-action@v1.2
-        with:
-          key: ${{ runner.os }}-${{ runner.arch }}-${{ github.ref_name }}
-          restore-keys: |
-            ${{ runner.os }}-${{ runner.arch }}-
-          max-size: 2G
-
+      - name: Skip optional ccache
+        run: echo "Building without ccache"
       # ──────────────────────────────────────────────────────────────────────────
       # 5. CMake configure
       #    FIX: use 'set -o pipefail' so the pipe to tee does NOT swallow cmake's
