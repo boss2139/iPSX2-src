@@ -234,16 +234,10 @@ jobs:
           path: ${{ env.IPA_PATH }}
           retention-days: 30
           if-no-files-found: error
+        
 
       # ──────────────────────────────────────────────────────────────────────────
-      # 11. ccache stats
-      # ──────────────────────────────────────────────────────────────────────────
-      - name: ccache stats
-        if: always()
-        run: ccache --show-stats
-
-      # ──────────────────────────────────────────────────────────────────────────
-      # 12. Upload full logs on failure
+      # 11. Upload full logs on failure
       # ──────────────────────────────────────────────────────────────────────────
       - name: Upload build logs (on failure)
         if: failure()
